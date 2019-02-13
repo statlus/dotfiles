@@ -1,0 +1,6 @@
+#!/bin/bash
+spotifystatus="$(spotify status)"
+#track="$(echo $spotifystatus | sed '4q;d' | awk '{$1=""; print $0}' | sed 's/^ *//g' | sed 's/ *$//g') - $(echo $spotifystatus | sed '2q;d' | awk '{$1=""; print $0}' | sed 's/^ *//g' | sed 's/ *$//g')"
+track="$(echo $spotifystatus | sed 's/.*Track://g' | sed -E 's/Position:.*//g' | sed 's/^ *//g' | sed 's/ *$//g') - $(echo $spotifystatus | sed 's/.*Artist://g' | sed -E 's/Album:.*//g' | sed 's/^ *//g' | sed 's/ *$//g')"
+echo "\uF886 $track"
+
